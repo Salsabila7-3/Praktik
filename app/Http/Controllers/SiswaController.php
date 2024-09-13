@@ -21,17 +21,16 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nis' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
+        $validator = $request->validate([
+            'nis' => 'required|integer',
+            'nama' => 'required|string',
+            'alamat' => 'required|string',
         ]);
-        // dd($data);
-        Siswa::create($data);
+        Siswa::create($validator);
         return redirect('siswa');
-    }
-
-    /**
+         }     /**
+    
+   
      * Display the specified resource.
      */
     public function show(string $id)
